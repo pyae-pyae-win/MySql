@@ -1,0 +1,228 @@
+
+mysql> create database databaseAssingment;
+Query OK, 1 row affected (1.32 sec)
+
+mysql> use databaseAssingment;
+Database changed
+mysql> create table Team(Id int,Name varchar(100),Primary Key(Id),Founded_Date date);
+Query OK, 0 rows affected (1.35 sec)
+
+mysql> select* from Team;
+Empty set (0.36 sec)
+
+mysql> insert into Team(Id,Name,Founded-Date) values(1,Manchester United,'1902_22_1');
+
+mysql> insert into Team(Id,Name,Founded_Date) values(1,"Manchester United",'1902_1_22');
+Query OK, 1 row affected (0.28 sec)
+
+mysql> insert into Team(Id,Name,Founded_Date) values(2,"Southampton",'1902_10_12');
+Query OK, 1 row affected (0.14 sec)
+
+mysql> select* from Team;
++----+-------------------+--------------+
+| Id | Name              | Founded_Date |
++----+-------------------+--------------+
+|  1 | Manchester United | 1902-01-22   |
+|  2 | Southampton       | 1902-10-12   |
++----+-------------------+--------------+
+2 rows in set (0.00 sec)
+
+mysql> create table Player(pid varchar(5),Name varchar(50),Jersyno int,Age int,Salary decimal,teamId char(5),Height decimal
+    -> ,Primary Key(pid),Id int,Foreign Key(Id) references Team(Id));
+Query OK, 0 rows affected (1.46 sec)
+
+mysql> insert into Player(pid,Name,Jersyno,Age,Salary,teamId,Height,Id) values("p1","Wan-Bissaka",29,30,500000,"t1",'6.2',1);
+Query OK, 1 row affected, 1 warning (0.26 sec)
+
+mysql> insert into Player(pid,Name,Jersyno,Age,Salary,teamId,Height,Id) values("p2","Lindelof",2,30,500000,"t1",'6.2',1);
+Query OK, 1 row affected, 1 warning (0.25 sec)
+
+mysql> insert into Player(pid,Name,Jersyno,Age,Salary,teamId,Height,Id) values("p3","H Maguire",5,32,500000,"t1",'6.1',1);
+Query OK, 1 row affected, 1 warning (0.20 sec)
+
+mysql> insert into Player(pid,Name,Jersyno,Age,Salary,teamId,Height,Id) values("p4","Paul Pogba",6,29,1000000,"t1",'6.3',1);
+Query OK, 1 row affected, 1 warning (0.20 sec)
+
+mysql> insert into Player(pid,Name,Jersyno,Age,Salary,teamId,Height,Id) values("p5","Greenwood",26,31,1000000,"t1",'7.3',1);
+Query OK, 1 row affected, 1 warning (0.15 sec)
+
+mysql> insert into Player(pid,Name,Jersyno,Age,Salary,teamId,Height,Id) values("p6","A Martial",9,28,800000,"t1",'7',1);
+Query OK, 1 row affected (0.18 sec)
+
+mysql> insert into Player(pid,Name,Jersyno,Age,Salary,teamId,Height,Id) values("p7","C Adams",10,28,800000,"t2",'7',2);
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into Player(pid,Name,Jersyno,Age,Salary,teamId,Height,Id) values("p8","Redmond",22,38,700000,"t2",'6',2);
+Query OK, 1 row affected (0.19 sec)
+
+mysql> insert into Player(pid,Name,Jersyno,Age,Salary,teamId,Height,Id) values("p9","Armstrong",17,40,1000000,"t2",'6.3',2);
+Query OK, 1 row affected, 1 warning (0.15 sec)
+
+mysql> insert into Player(pid,Name,Jersyno,Age,Salary,teamId,Height,Id) values("p10","J Bednarek",35,40,1000000,"t2",'6.8',2);
+Query OK, 1 row affected, 1 warning (0.08 sec)
+
+mysql> select * from Player;
++-----+-------------+---------+------+---------+--------+--------+------+
+| pid | Name        | Jersyno | Age  | Salary  | teamId | Height | Id   |
++-----+-------------+---------+------+---------+--------+--------+------+
+| p1  | Wan-Bissaka |      29 |   30 |  500000 | t1     |      6 |    1 |
+| p10 | J Bednarek  |      35 |   40 | 1000000 | t2     |      7 |    2 |
+| p2  | Lindelof    |       2 |   30 |  500000 | t1     |      6 |    1 |
+| p3  | H Maguire   |       5 |   32 |  500000 | t1     |      6 |    1 |
+| p4  | Paul Pogba  |       6 |   29 | 1000000 | t1     |      6 |    1 |
+| p5  | Greenwood   |      26 |   31 | 1000000 | t1     |      7 |    1 |
+| p6  | A Martial   |       9 |   28 |  800000 | t1     |      7 |    1 |
+| p7  | C Adams     |      10 |   28 |  800000 | t2     |      7 |    2 |
+| p8  | Redmond     |      22 |   38 |  700000 | t2     |      6 |    2 |
+| p9  | Armstrong   |      17 |   40 | 1000000 | t2     |      6 |    2 |
++-----+-------------+---------+------+---------+--------+--------+------+
+10 rows in set (0.00 sec)
+
+mysql> select * from Player where teamId='t2';
++-----+------------+---------+------+---------+--------+--------+------+
+| pid | Name       | Jersyno | Age  | Salary  | teamId | Height | Id   |
++-----+------------+---------+------+---------+--------+--------+------+
+| p10 | J Bednarek |      35 |   40 | 1000000 | t2     |      7 |    2 |
+| p7  | C Adams    |      10 |   28 |  800000 | t2     |      7 |    2 |
+| p8  | Redmond    |      22 |   38 |  700000 | t2     |      6 |    2 |
+| p9  | Armstrong  |      17 |   40 | 1000000 | t2     |      6 |    2 |
++-----+------------+---------+------+---------+--------+--------+------+
+4 rows in set (0.14 sec)
+
+mysql> select * from Player where Salary>500000;
++-----+------------+---------+------+---------+--------+--------+------+
+| pid | Name       | Jersyno | Age  | Salary  | teamId | Height | Id   |
++-----+------------+---------+------+---------+--------+--------+------+
+| p10 | J Bednarek |      35 |   40 | 1000000 | t2     |      7 |    2 |
+| p4  | Paul Pogba |       6 |   29 | 1000000 | t1     |      6 |    1 |
+| p5  | Greenwood  |      26 |   31 | 1000000 | t1     |      7 |    1 |
+| p6  | A Martial  |       9 |   28 |  800000 | t1     |      7 |    1 |
+| p7  | C Adams    |      10 |   28 |  800000 | t2     |      7 |    2 |
+| p8  | Redmond    |      22 |   38 |  700000 | t2     |      6 |    2 |
+| p9  | Armstrong  |      17 |   40 | 1000000 | t2     |      6 |    2 |
++-----+------------+---------+------+---------+--------+--------+------+
+7 rows in set (0.02 sec)
+
+mysql> Alter table Player drop column teamId;
+Query OK, 0 rows affected (2.78 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from Player;
++-----+-------------+---------+------+---------+--------+------+
+| pid | Name        | Jersyno | Age  | Salary  | Height | Id   |
++-----+-------------+---------+------+---------+--------+------+
+| p1  | Wan-Bissaka |      29 |   30 |  500000 |      6 |    1 |
+| p10 | J Bednarek  |      35 |   40 | 1000000 |      7 |    2 |
+| p2  | Lindelof    |       2 |   30 |  500000 |      6 |    1 |
+| p3  | H Maguire   |       5 |   32 |  500000 |      6 |    1 |
+| p4  | Paul Pogba  |       6 |   29 | 1000000 |      6 |    1 |
+| p5  | Greenwood   |      26 |   31 | 1000000 |      7 |    1 |
+| p6  | A Martial   |       9 |   28 |  800000 |      7 |    1 |
+| p7  | C Adams     |      10 |   28 |  800000 |      7 |    2 |
+| p8  | Redmond     |      22 |   38 |  700000 |      6 |    2 |
+| p9  | Armstrong   |      17 |   40 | 1000000 |      6 |    2 |
++-----+-------------+---------+------+---------+--------+------+
+10 rows in set (0.00 sec)
+
+mysql> select * from Player where Id=2;
++-----+------------+---------+------+---------+--------+------+
+| pid | Name       | Jersyno | Age  | Salary  | Height | Id   |
++-----+------------+---------+------+---------+--------+------+
+| p10 | J Bednarek |      35 |   40 | 1000000 |      7 |    2 |
+| p7  | C Adams    |      10 |   28 |  800000 |      7 |    2 |
+| p8  | Redmond    |      22 |   38 |  700000 |      6 |    2 |
+| p9  | Armstrong  |      17 |   40 | 1000000 |      6 |    2 |
++-----+------------+---------+------+---------+--------+------+
+4 rows in set (0.04 sec)
+
+mysql> select Name,(select SUM(Salary) from Player where Player.Id=Team.Id) as Salary from Team;
++-------------------+---------+
+| Name              | Salary  |
++-------------------+---------+
+| Manchester United | 4300000 |
+| Southampton       | 3500000 |
++-------------------+---------+
+2 rows in set (1.37 sec)
+
+mysql> insert into Player(pid,Name,Jersyno,Age,Salary,Height,Id) values("p11","O Romeu",14,30,1000000,'4.8',2);
+Query OK, 1 row affected, 1 warning (0.21 sec)
+
+mysql> insert into Player(pid,Name,Jersyno,Age,Salary,Height,Id) values("p12","Armstrong",17,20,1000000,'4.8',2);
+Query OK, 1 row affected, 1 warning (0.15 sec)
+
+mysql> select * from Player where height<5;
+Empty set (0.03 sec)
+
+mysql> select * from Player;
++-----+-------------+---------+------+---------+--------+------+
+| pid | Name        | Jersyno | Age  | Salary  | Height | Id   |
++-----+-------------+---------+------+---------+--------+------+
+| p1  | Wan-Bissaka |      29 |   30 |  500000 |      6 |    1 |
+| p10 | J Bednarek  |      35 |   40 | 1000000 |      7 |    2 |
+| p11 | O Romeu     |      14 |   30 | 1000000 |      5 |    2 |
+| p12 | Armstrong   |      17 |   20 | 1000000 |      5 |    2 |
+| p2  | Lindelof    |       2 |   30 |  500000 |      6 |    1 |
+| p3  | H Maguire   |       5 |   32 |  500000 |      6 |    1 |
+| p4  | Paul Pogba  |       6 |   29 | 1000000 |      6 |    1 |
+| p5  | Greenwood   |      26 |   31 | 1000000 |      7 |    1 |
+| p6  | A Martial   |       9 |   28 |  800000 |      7 |    1 |
+| p7  | C Adams     |      10 |   28 |  800000 |      7 |    2 |
+| p8  | Redmond     |      22 |   38 |  700000 |      6 |    2 |
+| p9  | Armstrong   |      17 |   40 | 1000000 |      6 |    2 |
++-----+-------------+---------+------+---------+--------+------+
+12 rows in set (0.00 sec)
+
+mysql> select * from Player where height<6;
++-----+-----------+---------+------+---------+--------+------+
+| pid | Name      | Jersyno | Age  | Salary  | Height | Id   |
++-----+-----------+---------+------+---------+--------+------+
+| p11 | O Romeu   |      14 |   30 | 1000000 |      5 |    2 |
+| p12 | Armstrong |      17 |   20 | 1000000 |      5 |    2 |
++-----+-----------+---------+------+---------+--------+------+
+2 rows in set (0.00 sec)
+
+mysql> select Name,(select AVG(Salary) from Player where Player.Id=Team.Id) as Average_Salary from Team;
++-------------------+----------------+
+| Name              | Average_Salary |
++-------------------+----------------+
+| Manchester United |    716666.6667 |
+| Southampton       |    916666.6667 |
++-------------------+----------------+
+2 rows in set (0.01 sec)
+
+mysql> select Name, MIN(Salary) as Lowest_Salary from Player;
++-------------+---------------+
+| Name        | Lowest_Salary |
++-------------+---------------+
+| Wan-Bissaka |        500000 |
++-------------+---------------+
+1 row in set (0.04 sec)
+
+mysql> select Name, MAX(Salary) as Lowest_Salary from Player;
++-------------+---------------+
+| Name        | Lowest_Salary |
++-------------+---------------+
+| Wan-Bissaka |       1000000 |
++-------------+---------------+
+1 row in set (0.00 sec)
+
+mysql> select name from Player where Age>30 and Salary>20000;
++------------+
+| name       |
++------------+
+| J Bednarek |
+| H Maguire  |
+| Greenwood  |
+| Redmond    |
+| Armstrong  |
++------------+
+5 rows in set (0.01 sec)
+
+mysql> SELECT COUNT(Id),Name,Salary FROM Player GROUP BY Id;
++-----------+-------------+---------+
+| COUNT(Id) | Name        | Salary  |
++-----------+-------------+---------+
+|         6 | Wan-Bissaka |  500000 |
+|         6 | J Bednarek  | 1000000 |
++-----------+-------------+---------+
+2 rows in set (0.02 sec)
